@@ -4,7 +4,15 @@ void main() => runApp(MaterialApp(
   home: TangoCard(),
 ));
 
-class TangoCard extends StatelessWidget{
+class TangoCard extends StatefulWidget{
+  @override
+  State<TangoCard> createState() => _TangoCardState();
+}
+
+class _TangoCardState extends State<TangoCard> {
+
+  int TangoLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,15 @@ class TangoCard extends StatelessWidget{
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            TangoLevel += 1;
+          }) ;
+        },
+        backgroundColor: Colors.grey[800],
+        child: const Icon(Icons.add),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 40, 30, 0.0),
@@ -34,8 +51,8 @@ class TangoCard extends StatelessWidget{
             const Text(
               'NAME',
               style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0
+                  color: Colors.grey,
+                  letterSpacing: 2.0
               ),
             ),
             const SizedBox(height: 10.0),
@@ -58,7 +75,7 @@ class TangoCard extends StatelessWidget{
             ),
             const SizedBox(height: 10.0),
             Text(
-              '8',
+              '$TangoLevel',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
@@ -74,10 +91,10 @@ class TangoCard extends StatelessWidget{
                   color: Colors.grey[400],
                 ),
                 const SizedBox(width: 10.0),
-                Text(
+                const Text(
                   'tusharjagi@gmail.com',
                   style: TextStyle(
-                    color: Colors.grey[400],
+                    color: Colors.grey,
                     fontSize: 18.0,
                     letterSpacing: 1.0,
                   ),
@@ -90,3 +107,6 @@ class TangoCard extends StatelessWidget{
     );
   }
 }
+
+
+
